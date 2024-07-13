@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
+    <title>Hello, World!</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <div class="cnt">
+        <div class="topDiv">
+            <p class="p1">--  My.CCLATOR  --</p>
+            <p class="p2" onclick='myFunc()' id="scrt">*</p>
+            <p class="p3">*</p>
+        </div>
+        <div class="result-box" id="result">0</div>
+        <div class="btnDiv">
+            <div class="div div1">
+                <button class="btn btn1" onclick="clearResult()">C</button>
+                <button class="btn btn1" onclick="appendToResult('%')">%</button>
+                <button class="btn btn1" onclick="deleteLast()" id="erase">⌫</button>
+                <button class="btn btn2" onclick="appendToResult('/')">÷</button>
+            </div>
+            <div class="div">
+                <button class="btn btn3" onclick="appendToResult('7')">7</button>
+                <button class="btn btn3" onclick="appendToResult('8')">8</button>
+                <button class="btn btn3" onclick="appendToResult('9')">9</button>
+                <button class="btn btn2" onclick="appendToResult('*')">&times;</button>
+            </div>
+            <div class="div">
+                <button class="btn btn3" onclick="appendToResult('4')">4</button>
+                <button class="btn btn3" onclick="appendToResult('5')">5</button>
+                <button class="btn btn3" onclick="appendToResult('6')">6</button>
+                <button class="btn btn2" onclick="appendToResult('-')">–</button>
+            </div>
+            <div class="div">
+                <button class="btn btn3" onclick="appendToResult('1')">1</button>
+                <button class="btn btn3" onclick="appendToResult('2')">2</button>
+                <button class="btn btn3" onclick="appendToResult('3')">3</button>
+                <button class="btn btn2" onclick="appendToResult('+')">+</button>
+            </div>
+            <div class="div">
+                <button class="btn btn3 zero" onclick="appendToResult('0')">0</button>
+                <button class="btn btn3" onclick="appendToResult('.')">.</button>
+                <button class="btn btn2" onclick="calculateResult()" id="btnCculate">=</button>
+            </div>
+        </div>
+    </div>
+    <div class="overlay" id="overlay">n</div>
+    <div class="hid" id="hid">
+        <p id="exit">&times;</p>
+        <p class="text">HIDDEN!!!</p>
+        <p class="definition">
+            Welcome to this Calculator! This easy-to-use tool provides instant results for any input you type. The input is hidden to ensure privacy, making it perfect for personal use. Enjoy the convenience and efficiency of this personalized calculator.
+            Brian’s Calculator..!!
+        </p>
+        <input type="text" placeholder="Enter something!" id="input">
+        <div class="btttn">
+            <button type="button" id="send" onclick='send()'>Send</button>
+            <button type="button" id="reset" onclick='reset()'>Reset</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js').then((registration) => {
+                    console.log('Service Worker registered with scope:', registration.scope);
+                }).catch((error) => {
+                    console.log('Service Worker registration failed:', error);
+                });
+            });
+        }
+    </script>
+</body>
+</html>
